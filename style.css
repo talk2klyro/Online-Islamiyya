@@ -10,17 +10,27 @@ body {
 
 /* ----------------- Header ----------------- */
 header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 1.5rem 1rem;
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.35);
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   border-bottom: 1px solid rgba(0,0,0,0.05);
+  gap: 0.5rem;
 }
 
 header img { 
   max-height: 70px; 
   width: auto;
+  border-radius: 12px; /* optional rounded logo */
+}
+
+header h1 {
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 /* ----------------- Navbar ----------------- */
@@ -39,7 +49,7 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: var(--theme-color); /* theme-aware links */
+  color: var(--theme-color);
   padding: 0.6rem 1.2rem;
   border-radius: 10px;
   font-weight: 500;
@@ -77,7 +87,7 @@ nav a.active {
   color: #333;
   transition: transform 0.25s, box-shadow 0.25s;
   font-weight: 500;
-  width: 100%; /* full width by default */
+  width: 100%;
 }
 
 /* Pastel variations */
@@ -99,8 +109,8 @@ table {
   margin-top: 1rem;
   background: white;
   border-radius: 12px;
-  overflow-x: auto; /* scrollable on small screens */
-  display: block;
+  overflow-x: auto;
+  display: block; /* scrollable horizontally */
 }
 
 th, td {
@@ -184,5 +194,13 @@ input:focus, select:focus, textarea:focus {
 
   table {
     font-size: 0.85rem;
+  }
+
+  header h1 {
+    font-size: 1rem;
+  }
+
+  header img {
+    max-height: 50px;
   }
   }
