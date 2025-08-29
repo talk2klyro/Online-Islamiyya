@@ -1,0 +1,112 @@
+<!DOCTYP<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Support the School</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header>
+    <img id="school-logo" alt="School Logo">
+    <h1 id="school-name"></h1>
+    <p id="motto"></p>
+  </header>
+
+  <nav id="navbar">
+    <a href="index.html">Dashboard</a>
+    <a href="add-student.html">Add Student</a>
+    <a href="attendance.html">Attendance</a>
+    <a href="export.html">Export</a>
+    <a href="support.html">Support</a>
+  </nav>
+
+  <div class="container" id="support-container">
+    <h2 id="support-title"></h2>
+    <p id="support-desc"></p>
+
+    <div id="donation-buttons" class="donation-section">
+      <h3>Suggested Donation Amounts</h3>
+    </div>
+
+    <div id="recurring-info" style="margin-top:1rem;"></div>
+
+    <div id="reward-tiers" style="margin-top:2rem;">
+      <h3>Reward Tiers</h3>
+      <ul id="tier-list"></ul>
+    </div>
+
+    <div id="bank-transfer" style="margin-top:2rem;"></div>
+
+    <div id="payment-status" style="margin-top:1rem;color:green;"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const support = window.CLIENT_CONFIG.support;
+
+      if (!support || !support.enabled) {
+        document.getElementById("support-container").innerHTML = "<p>Support feature is currently disabled.</p>";
+        return;
+      }
+
+      // Title and description
+      document.getElementById("support-title").textContent = support.pageTitle;
+      document.getElementById("support-desc").textContent = support.description;
+
+      // Donation Buttons
+      const btnContainer = document.getElementById("donation-buttons");
+      support.suggestedAmounts.forEach(amount => {
+        const btn = document.createElement("button");
+        btn.textContent = `Donate ₦${amount}`;
+        btn.style.margin = "0.3rem";
+
+        btn.onclick = async () => {
+          // Stripe integration
+          if (support.paymentProviders?.stripe?.publicKey) {
+            const stripe = Stripe(support.paymentProviders.stripe.publicKey);
+            const res = await fetch(`${window.CLIENT_CONFIG.apiBaseUrl}/create-checkout-session`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ amount })
+            });
+            const data = await res.json();
+            if (data.sessionId) stripe.redirectToCheckout({ sessionId: data.sessionId });
+            else alert("Payment initiation failed");
+          } else {
+            alert(`Redirect to payment gateway for ₦${amount}`);
+          }
+        };
+        btnContainer.appendChild(btn);
+      });
+
+      // Recurring info
+      if (support.recurring) {
+        document.getElementById("recurring-info").textContent = "You can set up weekly or monthly support to help sustain the school.";
+      }
+
+      // Reward Tiers
+      const tierList = document.getElementById("tier-list");
+      support.rewardTiers.forEach(t => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${t.title}:</strong> ${t.description} (Min ₦${t.minAmount})`;
+        tierList.appendChild(li);
+      });
+
+      // Bank Transfer Section
+      if (support.bankTransfer && support.bankTransfer.enabled) {
+        const bankDiv = document.getElementById("bank-transfer");
+        bankDiv.innerHTML = `
+          <h3>Bank Transfer Option</h3>
+          <p>Account Name: ${support.bankTransfer.accountName}</p>
+          <p>Account Number: ${support.bankTransfer.accountNumber}</p>
+          <p>Bank: ${support.bankTransfer.bank}</p>
+          ${support.bankTransfer.qrCode ? `<img src="${support.bankTransfer.qrCode}" alt="Bank QR Code" style="max-width:200px;">` : ""}
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
