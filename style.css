@@ -1,10 +1,13 @@
+/* ----------------- General Body ----------------- */
 body {
   font-family: Arial, sans-serif;
-  margin: 0; padding: 0;
-  background: linear-gradient(135deg, #a2c2e3, #f0f2f5);
+  margin: 0; 
+  padding: 0;
+  background-color: #f9f9f9; /* neutral off-white background */
   color: #333;
 }
 
+/* ----------------- Header ----------------- */
 header {
   text-align: center;
   padding: 1rem;
@@ -12,8 +15,11 @@ header {
   background: rgba(255, 255, 255, 0.3);
 }
 
-header img { max-height: 60px; }
+header img { 
+  max-height: 60px; 
+}
 
+/* ----------------- Navbar ----------------- */
 nav {
   display: flex;
   justify-content: center;
@@ -25,7 +31,7 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: var(--theme-color); /* theme-aware links */
   padding: 0.5rem 1rem;
   border-radius: 8px;
 }
@@ -35,19 +41,45 @@ nav a.active {
   font-weight: bold;
 }
 
+/* ----------------- Container ----------------- */
 .container {
   max-width: 900px;
   margin: 2rem auto;
-  background: rgba(255,255,255,0.2);
   padding: 2rem;
   border-radius: 12px;
   backdrop-filter: blur(10px);
 }
 
+/* ----------------- Pastel Cards for Modules ----------------- */
+.card {
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Pastel variations */
+.card-yellow { background-color: #FFF9C4; }  /* light yellow */
+.card-orange { background-color: #FFE0B2; }  /* light orange */
+.card-green  { background-color: #C8E6C9; }  /* light green */
+.card-red    { background-color: #FFCDD2; }  /* light red */
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ----------------- Tables ----------------- */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 th, td {
@@ -56,8 +88,9 @@ th, td {
   text-align: center;
 }
 
+/* ----------------- Buttons ----------------- */
 button {
-  background: #4CAF50;
+  background: var(--theme-color); /* theme-aware buttons */
   border: none;
   padding: 0.6rem 1rem;
   color: white;
@@ -66,9 +99,10 @@ button {
 }
 
 button:hover {
-  background: #45a049;
+  opacity: 0.85;
 }
 
+/* ----------------- Forms ----------------- */
 form {
   display: flex;
   flex-direction: column;
