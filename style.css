@@ -20,6 +20,7 @@ header {
 
 header img { 
   max-height: 70px; 
+  width: auto;
 }
 
 /* ----------------- Navbar ----------------- */
@@ -31,8 +32,9 @@ nav {
   padding: 0.75rem 0.5rem;
   backdrop-filter: blur(12px);
   border-radius: 12px;
-  margin: 0 2rem;
+  margin: 0 2rem 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 nav a {
@@ -75,6 +77,7 @@ nav a.active {
   color: #333;
   transition: transform 0.25s, box-shadow 0.25s;
   font-weight: 500;
+  width: 100%; /* full width by default */
 }
 
 /* Pastel variations */
@@ -96,7 +99,8 @@ table {
   margin-top: 1rem;
   background: white;
   border-radius: 12px;
-  overflow: hidden;
+  overflow-x: auto; /* scrollable on small screens */
+  display: block;
 }
 
 th, td {
@@ -119,6 +123,7 @@ button {
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease-in-out;
+  width: auto;
 }
 
 button:hover {
@@ -133,13 +138,14 @@ form {
   gap: 0.75rem;
 }
 
-/* Input styling */
 input, select, textarea {
   padding: 0.6rem;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 0.95rem;
   transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -148,14 +154,35 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ----------------- Responsive ----------------- */
+@media (max-width: 1024px) {
+  .container {
+    margin: 1.5rem;
+    padding: 1.75rem;
+  }
+}
+
 @media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
   .container {
     margin: 1rem;
     padding: 1.5rem;
   }
 
-  nav {
-    flex-direction: column;
-    gap: 0.5rem;
+  input, select, textarea, button {
+    width: 100%;
+    box-sizing: border-box;
   }
+
+  table {
+    font-size: 0.85rem;
   }
+}
