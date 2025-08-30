@@ -1,37 +1,126 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard - School Admin</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="config.js"></script>
-  <script src="api.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Dashboard - Madarasatun Nisa</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Preload critical scripts -->
+  <script src="config.js" defer></script>
+  <script src="api.js" defer></script>
   <script src="main.js" defer></script>
+
+  <!-- Page-specific styles (optional inline for performance) -->
+  <style>
+    .container {
+      padding: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+
+    th {
+      background-color: var(--primary-light, #f0f8ff);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      thead {
+        display: none;
+      }
+
+      table, tbody, tr, td {
+        all: unset;
+        display: block;
+      }
+
+      tr {
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+      }
+
+      td:before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        min-width: 80px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <img id="school-logo" alt="School Logo">
-    <h1 id="school-name"></h1>
-    <p id="motto"></p>
+  <header class="header">
+    <div class="logo-container">
+      <img id="school-logo" src="assets/logo.png" alt="Madarasatun Nisa Logo" />
+    </div>
+    <div class="header-text">
+      <h1 id="school-name">Madarasatun Nisa</h1>
+      <p id="motto" class="motto">Empowering Girls Through Islamic Education</p>
+    </div>
   </header>
 
-  <nav id="navbar">
-    <a href="index.html">Dashboard</a>
-    <a href="add-student.html">Add Student</a>
-    <a href="attendance.html">Attendance</a>
-    <a href="export.html">Export</a>
+  <nav id="navbar" class="navbar">
+    <a href="index.html" class="nav-link active">Dashboard</a>
+    <a href="add-student.html" class="nav-link">Add Student</a>
+    <a href="attendance.html" class="nav-link">Attendance</a>
+    <a href="export.html" class="nav-link">Export</a>
   </nav>
 
-  <div class="container">
-    <h2>Student List</h2>
-    <table>
+  <main class="container">
+    <h2 class="page-title">Student List</h2>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading">Loading students...</div>
+
+    <!-- Error State -->
+    <div id="error" class="error hidden">Failed to load students. Please try again later.</div>
+
+    <!-- Table -->
+    <table id="student-table-container" aria-label="List of students">
       <thead>
-        <tr><th>S/N</th><th>Name</th><th>Phone</th></tr>
+        <tr>
+          <th>S/N</th>
+          <th>Name</th>
+          <th>Phone</th>
+        </tr>
       </thead>
-      <tbody id="student-table"></tbody>
+      <tbody id="student-table">
+        <!-- Dynamically populated by main.js -->
+      </tbody>
     </table>
-    <br>
-    <a href="add-student.html"><button>Add New Student</button></a>
-  </div>
+
+    <div class="button-group">
+      <a href="add-student.html">
+        <button type="button" class="btn btn-primary">➕ Add New Student</button>
+      </a>
+    </div>
+  </main>
+
+  <!-- Optional Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
 </body>
 </html>
