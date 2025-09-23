@@ -1,0 +1,30 @@
+{
+  "featured": {
+    "title": "Believe in Yourself",
+    "url": "https://www.youtube.com/embed/VIDEO_ID"
+  },
+  "videos": [
+    {
+      "title": "Overcoming Fear",
+      "url": "https://www.youtube.com/embed/VIDEO_ID"
+    },
+    {
+      "title": "Never Give Up",
+      "url": "https://www.youtube.com/embed/VIDEO_ID"
+    }
+  ],
+  "blogs": [
+    {
+      "title": "5 Ways to Stay Motivated",
+      "date": "2025-09-23",
+      "excerpt": "Motivation comes from within, but here are 5 ways to boost it daily...",
+      "url": "#"
+    },
+    {
+      "title": "Turn Setbacks into Comebacks",
+      "date": "2025-09-22",
+      "excerpt": "Failure is not the end. Learn how to use it as fuel for success...",
+      "url": "#"
+    }
+  ]
+}
