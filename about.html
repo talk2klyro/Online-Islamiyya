@@ -5,8 +5,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      padding: 1.5rem 3rem;
+      background: #ffffffdd;
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    header nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: #444;
+      transition: color 0.3s;
+    }
+    header nav a:hover { color: #e67e22; }
+
+    /* Hero Section */
+    .hero-about {
+      text-align: center;
+      padding: 6rem 2rem 4rem 2rem;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      color: #2c3e50;
+    }
+    .hero-about h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .hero-about p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Mission & Vision Section */
+    .mission-vision {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .card h2 {
+      color: #e67e22;
+      margin-bottom: 1rem;
+    }
+    .card p {
+      color: #555;
+    }
+
+    /* Inspirational Quotes Section */
+    .quotes {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .quotes h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+    }
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .quote-box {
+      background: linear-gradient(135deg, #fdfbfb, #f0f0f0);
+      border-left: 6px solid #e67e22;
+      border-radius: 1rem;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+      padding: 2rem;
+      font-style: italic;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .quote-box::before {
+      content: "“";
+      font-size: 3rem;
+      color: #e67e22;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      opacity: 0.2;
+    }
+    .quote-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #ffffffee;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 4rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
     <nav>
       <a href="index.html">Home</a>
@@ -17,13 +146,60 @@
     </nav>
   </header>
 
-  <section class="content">
-    <h1>About Us</h1>
-    <p>We share motivational speeches, stories, and daily inspiration. Our mission is to help you push past limits and believe in yourself.</p>
+  <!-- Hero Section -->
+  <section class="hero-about">
+    <h1>About Motivation Hub</h1>
+    <p>Think about it: what if a little daily inspiration could change the way you see life, one step at a time? Motivation Hub was created to help people find that spark—through uplifting stories, practical personal growth tips, and lifestyle guidance that actually works in real life.</p>
   </section>
 
+  <!-- Mission & Vision Section -->
+  <section class="mission-vision">
+    <div class="card">
+      <h2>Our Mission</h2>
+      <p>To empower you to take small steps that lead to big changes, provide daily inspiration, and create a community of learners, dreamers, and doers.</p>
+    </div>
+    <div class="card">
+      <h2>What You’ll Find Here</h2>
+      <p>Lifestyle tips, personal growth articles, motivational stories, and inspirational quotes to help you move forward every day.</p>
+    </div>
+    <div class="card">
+      <h2>Why We Do It</h2>
+      <p>Life isn’t about perfection—it’s about progress. Motivation Hub exists to give you guidance, encouragement, and a community that supports your journey.</p>
+    </div>
+  </section>
+
+  <!-- Inspirational Quotes Section -->
+  <section class="quotes">
+    <h2>✨ Inspiration for Our Community ✨</h2>
+    <div class="quote-grid" id="quote-grid">
+      <!-- Quotes will load dynamically from quotes.json -->
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Motivation Hub</p>
+    <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
   </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    // Dynamic Quotes Loader
+    fetch('quotes.json')
+      .then(response => response.json())
+      .then(data => {
+        const quoteGrid = document.getElementById('quote-grid');
+        quoteGrid.innerHTML = "";
+        data.sort(() => Math.random() - 0.5); // Shuffle quotes
+        data.forEach(quote => {
+          const box = document.createElement('div');
+          box.classList.add('quote-box');
+          box.textContent = quote.text;
+          quoteGrid.appendChild(box);
+        });
+      })
+      .catch(err => console.error("Error loading quotes:", err));
+  </script>
+
 </body>
-</html>
+    </html>
