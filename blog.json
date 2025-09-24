@@ -1,17 +1,24 @@
 [
   {
-    "title": "5 Habits That Change Your Life",
-    "summary": "Learn simple habits that can have a huge impact on your daily productivity and happiness.",
-    "url": "blog/habits.html"
+    "id": "morning-habits",
+    "title": "5 Morning Habits That Will Change Your Life",
+    "summary": "Learn simple morning routines to boost productivity and positivity every day.",
+    "category": "personal-growth",
+    "content": "<p>Start small, focus on consistency, and build daily routines...</p><ul><li>Wake up early</li><li>Exercise</li><li>Meditate</li></ul>",
+    "thumbnail": "assets/blog1.jpg",
+    "author": "John Doe",
+    "date": "Sep 24, 2025",
+    "video": "https://www.youtube.com/embed/vGRW3F5MKG0"
   },
   {
-    "title": "How to Stay Motivated Every Day",
-    "summary": "Discover practical tips and mindset shifts to maintain motivation consistently.",
-    "url": "blog/motivation.html"
-  },
-  {
-    "title": "The Power of Positive Thinking",
-    "summary": "Explore how a positive mindset can transform your personal and professional life.",
-    "url": "blog/positive-thinking.html"
+    "id": "stay-motivated",
+    "title": "How to Stay Motivated When Life Gets Tough",
+    "summary": "Discover actionable strategies to maintain motivation even during challenges.",
+    "category": "inspirational-stories",
+    "content": "<p>Life can be challenging, but motivation can be regained with...</p>",
+    "thumbnail": "assets/blog2.jpg",
+    "author": "Jane Smith",
+    "date": "Sep 22, 2025",
+    "video": "https://www.youtube.com/embed/coBDEAEHnLk"
   }
 ]
