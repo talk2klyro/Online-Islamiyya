@@ -6,7 +6,6 @@
   <title>Motivation Hub</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Body & Atmosphere */
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -16,105 +15,53 @@
     }
 
     /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 3rem;
-      background: #ffffffdd;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 500;
-      color: #444;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #e67e22; }
+    header { padding: 1.5rem 3rem; background: #ffffffdd; backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05);}
+    header .logo { height: 50px; }
+    header nav a { margin: 0 1rem; text-decoration: none; font-weight: 500; color: #444; transition: color 0.3s;}
+    header nav a:hover { color: #e67e22; }
 
     /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      color: #2c3e50;
-    }
+    .hero { text-align: center; padding: 6rem 2rem 4rem 2rem; color: #2c3e50; }
     .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; }
-    .hero p { font-size: 1.25rem; margin-bottom: 2rem; }
-    .btn {
-      background: #e67e22;
-      color: #fff;
-      padding: 0.8rem 2rem;
-      border-radius: 2rem;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .btn:hover { background: #d35400; }
+    .hero p { font-size: 1.25rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: #555; }
+    .hero .btn { background: #e67e22; color: #fff; padding: 0.8rem 2rem; border-radius: 2rem; border: none; font-weight: bold; cursor: pointer; text-decoration: none; transition: background 0.3s;}
+    .hero .btn:hover { background: #d35400; }
 
-    /* Quotes Section */
-    .quotes {
-      padding: 4rem 2rem;
-      background: #fff;
-      text-align: center;
-    }
-    .quotes h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #2c3e50;
-    }
-    .quote-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .quote-box {
-      background: linear-gradient(135deg, #fdfbfb, #f0f0f0);
-      border-left: 6px solid #e67e22;
-      border-radius: 1rem;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-      padding: 2rem;
-      font-style: italic;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .quote-box::before {
-      content: "“";
-      font-size: 3rem;
-      color: #e67e22;
-      position: absolute;
-      top: 10px;
-      left: 15px;
-      opacity: 0.2;
-    }
-    .quote-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
+    /* Sections */
+    section { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+
+    /* Featured Videos */
+    .featured-videos { margin-bottom: 4rem; }
+    .featured-videos h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #2c3e50; }
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .video-card { background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+    .video-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+    .video-card img { width: 100%; height: 160px; object-fit: cover; }
+    .video-card h3 { font-size: 1.2rem; padding: 1rem; color: #2c3e50; }
+
+    /* Blog Highlights */
+    .blog-highlights { margin-bottom: 4rem; }
+    .blog-highlights h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #2c3e50; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .blog-card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+    .blog-card h3 { margin-top: 0; color: #e67e22; }
+    .blog-card p { color: #555; }
+
+    /* CTA Section */
+    .cta { text-align: center; margin: 4rem 0; }
+    .cta a { margin: 0 1rem; display: inline-block; background: #e67e22; color: #fff; padding: 0.8rem 2rem; border-radius: 2rem; text-decoration: none; font-weight: bold; transition: background 0.3s;}
+    .cta a:hover { background: #d35400; }
 
     /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #ffffffee;
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 4rem;
-    }
+    footer { text-align: center; padding: 2rem; background: #ffffffee; font-size: 0.9rem; color: #555; margin-top: 4rem; }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo" style="height:50px;">
+    <img src="assets/logo.png" alt="Logo" class="logo">
     <nav>
       <a href="index.html">Home</a>
       <a href="videos.html">Videos</a>
@@ -127,21 +74,32 @@
   <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to Motivation Hub</h1>
-    <p>Daily speeches and inspiration to keep you moving forward 🚀</p>
-    <a href="videos.html" class="btn">Watch Now</a>
+    <p>Daily speeches, stories, and inspiration to keep you moving forward. Unlock your potential and ignite your motivation!</p>
+    <a href="videos.html" class="btn">Watch Videos</a>
   </section>
 
-  <!-- Featured Video Section -->
-  <section class="featured" id="featured-video">
-    <!-- Featured video from JSON will load here -->
-  </section>
-
-  <!-- Quotes Section -->
-  <section class="quotes">
-    <h2>✨ Daily Inspiration ✨</h2>
-    <div class="quote-grid" id="quote-grid">
-      <!-- Quotes will load dynamically here -->
+  <!-- Featured Videos Section -->
+  <section class="featured-videos">
+    <h2>Featured Videos</h2>
+    <div class="video-grid" id="featured-videos">
+      <!-- Featured videos loaded dynamically -->
     </div>
+  </section>
+
+  <!-- Blog Highlights Section -->
+  <section class="blog-highlights">
+    <h2>From Our Blog</h2>
+    <div class="blog-grid" id="blog-highlights">
+      <!-- Blog posts loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Join Our Community</h2>
+    <p>Get motivational tips, personal growth advice, and lifestyle inspiration delivered weekly.</p>
+    <a href="join.html">Subscribe Now</a>
+    <a href="about.html">Learn More</a>
   </section>
 
   <!-- Footer -->
@@ -149,27 +107,42 @@
     <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
   </footer>
 
-  <!-- Scripts -->
   <script src="js/app.js"></script>
   <script>
-    // Dynamic Quotes Loader
-    fetch('quotes.json')
-      .then(response => response.json())
-      .then(data => {
-        const quoteGrid = document.getElementById('quote-grid');
-        quoteGrid.innerHTML = "";
-
-        // Shuffle quotes for variety
-        data.sort(() => Math.random() - 0.5);
-
-        data.forEach(quote => {
-          const box = document.createElement('div');
-          box.classList.add('quote-box');
-          box.textContent = quote.text;
-          quoteGrid.appendChild(box);
+    // Sample dynamic loader for featured videos
+    fetch('videos.json')
+      .then(res => res.json())
+      .then(videos => {
+        const featured = document.getElementById('featured-videos');
+        videos.slice(0,4).forEach(video => {
+          const card = document.createElement('div');
+          card.classList.add('video-card');
+          card.innerHTML = `
+            <img src="${video.thumbnail}" alt="${video.title}">
+            <h3>${video.title}</h3>
+          `;
+          card.addEventListener('click', () => window.open(video.youtube || video.tiktok, '_blank'));
+          featured.appendChild(card);
         });
-      })
-      .catch(err => console.error("Error loading quotes:", err));
+      });
+
+    // Sample dynamic loader for blog highlights
+    fetch('blog.json')
+      .then(res => res.json())
+      .then(posts => {
+        const blogGrid = document.getElementById('blog-highlights');
+        posts.slice(0,3).forEach(post => {
+          const card = document.createElement('div');
+          card.classList.add('blog-card');
+          card.innerHTML = `
+            <h3>${post.title}</h3>
+            <p>${post.summary}</p>
+          `;
+          card.addEventListener('click', () => window.location.href = post.url);
+          blogGrid.appendChild(card);
+        });
+      });
   </script>
+
 </body>
-</html>
+    </html>
