@@ -1,0 +1,114 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post | Motivation Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { font-family:'Segoe UI', sans-serif; margin:0; background:linear-gradient(135deg, #fdfcfb, #e2d1c3); color:#333; }
+    header { padding:1.5rem 3rem; background:#ffffffdd; backdrop-filter: blur(10px); display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
+    header .logo { height:50px; }
+    header nav a { margin:0 1rem; text-decoration:none; font-weight:500; color:#444; transition:color 0.3s;}
+    header nav a:hover { color:#e67e22; }
+
+    .hero { text-align:center; padding:4rem 2rem; }
+    .hero h1 { font-size:3rem; color:#2c3e50; margin-bottom:0.5rem; }
+    .hero p { font-size:1.1rem; color:#555; margin-bottom:1rem; }
+    .post-meta { font-size:0.9rem; color:#777; margin-bottom:2rem; }
+
+    .post-content { max-width:900px; margin:0 auto 4rem auto; padding:0 2rem; line-height:1.8; font-size:1.05rem; color:#444; }
+    .post-content h2, .post-content h3 { color:#2c3e50; margin-top:2rem; }
+    .post-content p { margin-bottom:1.2rem; }
+    .post-content ul { margin-left:1.5rem; margin-bottom:1.5rem; }
+    .post-content blockquote { border-left:4px solid #e67e22; padding-left:1rem; font-style:italic; color:#555; margin:1.5rem 0; }
+    iframe { width:100%; max-width:700px; margin:2rem auto; display:block; border-radius:1rem; }
+
+    .cta { text-align:center; margin:4rem 0; }
+    .cta a { margin:0 1rem; display:inline-block; background:#e67e22; color:#fff; padding:0.8rem 2rem; border-radius:2rem; text-decoration:none; font-weight:bold; transition:background 0.3s;}
+    .cta a:hover { background:#d35400; }
+
+    footer { text-align:center; padding:2rem; background:#ffffffee; font-size:0.9rem; color:#555; margin-top:4rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="assets/logo.png" alt="Logo" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="videos.html">Videos</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Join</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 id="post-title">Loading...</h1>
+  <p class="post-meta" id="post-meta"></p>
+  <img id="post-thumbnail" src="" alt="" style="max-width:90%; border-radius:1rem; margin-top:1rem; display:none;">
+</section>
+
+<section class="post-content" id="post-content">
+  <!-- Post content will be dynamically loaded -->
+</section>
+
+<section class="cta">
+  <h2>Enjoyed this post?</h2>
+  <p>Subscribe to our newsletter for more inspiration and tips!</p>
+  <a href="join.html">Subscribe Now</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
+</footer>
+
+<script>
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+const postId = getQueryParam('id');
+const postTitle = document.getElementById('post-title');
+const postMeta = document.getElementById('post-meta');
+const postContent = document.getElementById('post-content');
+const postThumbnail = document.getElementById('post-thumbnail');
+
+fetch('blog.json')
+  .then(res => res.json())
+  .then(posts => {
+    const post = posts.find(p => p.id === postId);
+    if (!post) {
+      postTitle.textContent = 'Post not found';
+      return;
+    }
+
+    postTitle.textContent = post.title;
+    postMeta.textContent = `By ${post.author} | ${post.date} | Category: ${post.category}`;
+    
+    if (post.thumbnail) {
+      postThumbnail.src = post.thumbnail;
+      postThumbnail.alt = post.title;
+      postThumbnail.style.display = 'block';
+    }
+
+    postContent.innerHTML = post.content;
+
+    if (post.video) {
+      const iframe = document.createElement('iframe');
+      iframe.src = post.video;
+      iframe.title = post.title;
+      iframe.allowFullscreen = true;
+      postContent.appendChild(iframe);
+    }
+  })
+  .catch(err => {
+    postTitle.textContent = 'Error loading post';
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>
