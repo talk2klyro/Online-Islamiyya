@@ -6,6 +6,7 @@
   <title>Motivation Hub</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    /* Body & Atmosphere */
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -14,6 +15,7 @@
       line-height: 1.6;
     }
 
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -26,7 +28,6 @@
       top: 0;
       z-index: 1000;
     }
-
     nav a {
       margin: 0 1rem;
       text-decoration: none;
@@ -34,25 +35,17 @@
       color: #444;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: #e67e22;
-    }
+    nav a:hover { color: #e67e22; }
 
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 6rem 2rem;
       background: linear-gradient(135deg, #fdfbfb, #ebedee);
       color: #2c3e50;
     }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; }
+    .hero p { font-size: 1.25rem; margin-bottom: 2rem; }
     .btn {
       background: #e67e22;
       color: #fff;
@@ -62,9 +55,7 @@
       font-weight: bold;
       transition: background 0.3s;
     }
-    .btn:hover {
-      background: #d35400;
-    }
+    .btn:hover { background: #d35400; }
 
     /* Quotes Section */
     .quotes {
@@ -108,6 +99,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem;
@@ -119,6 +111,8 @@
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
     <img src="assets/logo.png" alt="Logo" class="logo" style="height:50px;">
     <nav>
@@ -130,31 +124,52 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to Motivation Hub</h1>
     <p>Daily speeches and inspiration to keep you moving forward 🚀</p>
     <a href="videos.html" class="btn">Watch Now</a>
   </section>
 
+  <!-- Featured Video Section -->
   <section class="featured" id="featured-video">
     <!-- Featured video from JSON will load here -->
   </section>
 
-  <!-- Dedicated Quotes Section -->
+  <!-- Quotes Section -->
   <section class="quotes">
     <h2>✨ Daily Inspiration ✨</h2>
     <div class="quote-grid" id="quote-grid">
-      <div class="quote-box">“Your future is created by what you do today, not tomorrow.”</div>
-      <div class="quote-box">“Small daily steps lead to big lifetime changes.”</div>
-      <div class="quote-box">“Believe you can, and you’re halfway there.”</div>
-      <div class="quote-box">“Discipline is the bridge between goals and achievement.”</div>
+      <!-- Quotes will load dynamically here -->
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="js/app.js"></script>
+  <script>
+    // Dynamic Quotes Loader
+    fetch('quotes.json')
+      .then(response => response.json())
+      .then(data => {
+        const quoteGrid = document.getElementById('quote-grid');
+        quoteGrid.innerHTML = "";
+
+        // Shuffle quotes for variety
+        data.sort(() => Math.random() - 0.5);
+
+        data.forEach(quote => {
+          const box = document.createElement('div');
+          box.classList.add('quote-box');
+          box.textContent = quote.text;
+          quoteGrid.appendChild(box);
+        });
+      })
+      .catch(err => console.error("Error loading quotes:", err));
+  </script>
 </body>
 </html>
