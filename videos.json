@@ -2,42 +2,36 @@
   {
     "title": "Short Motivation Boost 1",
     "description": "A quick 1-minute video to energize your day.",
-    "thumbnail": "assets/thumbnails/video1.jpg",
     "category": "quick-clips",
     "youtube": "https://youtube.com/shorts/LrSdlCeB4PQ?si=mdFEl2UGjZ4jU5sW"
   },
   {
     "title": "Morning Inspiration",
     "description": "Start your day with positivity and focus.",
-    "thumbnail": "assets/thumbnails/video2.jpg",
     "category": "personal-growth",
     "youtube": "https://youtu.be/vGRW3F5MKG0?si=ioeCQJcyMr_OgTeA"
   },
   {
     "title": "Overcoming Challenges",
     "description": "Learn how to face obstacles and keep moving forward.",
-    "thumbnail": "assets/thumbnails/video3.jpg",
     "category": "inspirational-stories",
     "youtube": "https://youtu.be/coBDEAEHnLk?si=9pCwtcyUIk6_hkTA"
   },
   {
     "title": "Short Motivation Boost 2",
     "description": "Another quick clip to lift your spirits instantly.",
-    "thumbnail": "assets/thumbnails/video4.jpg",
     "category": "quick-clips",
     "youtube": "https://youtube.com/shorts/ptvBabSDmpw?si=GHVYGRuFlsZ3gm0i"
   },
   {
     "title": "Daily Motivation Talk",
     "description": "A motivating story to keep you inspired all day.",
-    "thumbnail": "assets/thumbnails/video5.jpg",
     "category": "personal-growth",
     "youtube": "https://youtu.be/O50MPoHd3NU?si=aTUaBBA0OHRf0IjP"
   },
   {
     "title": "Success Mindset",
     "description": "Develop the mindset you need for success.",
-    "thumbnail": "assets/thumbnails/video6.jpg",
     "category": "personal-growth",
     "youtube": "https://youtu.be/SydP7OrTVUo?si=hXaKN_exkZ3vqb5O"
   }
