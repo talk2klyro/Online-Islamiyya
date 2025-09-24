@@ -6,143 +6,143 @@
   <title>Motivation Hub</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
-      color: #333;
-      line-height: 1.6;
-    }
+    body { font-family: 'Segoe UI', sans-serif; margin:0; background: linear-gradient(135deg, #fdfcfb, #e2d1c3); color: #333; }
+    header { padding:1.5rem 3rem; background:#ffffffdd; backdrop-filter: blur(10px); display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
+    header .logo { height:50px; }
+    header nav a { margin:0 1rem; text-decoration:none; font-weight:500; color:#444; transition:color 0.3s;}
+    header nav a:hover { color:#e67e22; }
 
-    /* Header */
-    header { padding: 1.5rem 3rem; background: #ffffffdd; backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05);}
-    header .logo { height: 50px; }
-    header nav a { margin: 0 1rem; text-decoration: none; font-weight: 500; color: #444; transition: color 0.3s;}
-    header nav a:hover { color: #e67e22; }
+    .hero { text-align:center; padding:6rem 2rem 4rem 2rem; color:#2c3e50; }
+    .hero h1 { font-size:3rem; margin-bottom:1rem; font-weight:700; }
+    .hero p { font-size:1.25rem; margin-bottom:2rem; max-width:700px; margin-left:auto; margin-right:auto; color:#555; }
+    .hero .btn { background:#e67e22; color:#fff; padding:0.8rem 2rem; border-radius:2rem; border:none; font-weight:bold; cursor:pointer; text-decoration:none; transition:background 0.3s;}
+    .hero .btn:hover { background:#d35400; }
 
-    /* Hero Section */
-    .hero { text-align: center; padding: 6rem 2rem 4rem 2rem; color: #2c3e50; }
-    .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; }
-    .hero p { font-size: 1.25rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: #555; }
-    .hero .btn { background: #e67e22; color: #fff; padding: 0.8rem 2rem; border-radius: 2rem; border: none; font-weight: bold; cursor: pointer; text-decoration: none; transition: background 0.3s;}
-    .hero .btn:hover { background: #d35400; }
+    section { max-width:1200px; margin:3rem auto; padding:0 2rem; }
 
-    /* Sections */
-    section { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+    /* Bento Video Cards */
+    .video-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:2rem; }
+    .video-card { background:#fff; border-radius:1rem; box-shadow:0 8px 25px rgba(0,0,0,0.08); overflow:hidden; transition: transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; }
+    .video-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.15); }
+    .video-card img { width:100%; height:180px; object-fit:cover; }
+    .video-card-content { padding:1rem; flex:1; display:flex; flex-direction:column; }
+    .video-card h3 { font-size:1.2rem; margin:0.5rem 0; color:#2c3e50; }
+    .video-card p { font-size:0.95rem; color:#555; flex:1; }
+    .video-buttons { display:flex; gap:0.5rem; margin-top:1rem; }
+    .video-buttons a { flex:1; text-align:center; padding:0.5rem 0; border-radius:2rem; text-decoration:none; font-weight:bold; color:#fff; background:#e67e22; transition:background 0.3s;}
+    .video-buttons a:hover { background:#d35400; }
 
-    /* Featured Videos */
-    .featured-videos { margin-bottom: 4rem; }
-    .featured-videos h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #2c3e50; }
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-    .video-card { background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
-    .video-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-    .video-card img { width: 100%; height: 160px; object-fit: cover; }
-    .video-card h3 { font-size: 1.2rem; padding: 1rem; color: #2c3e50; }
+    /* Blog Cards */
+    .featured-blogs h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #2c3e50; }
+    .blog-card { background:#fff; border-radius:1rem; box-shadow:0 8px 25px rgba(0,0,0,0.08); padding:1rem; transition: transform 0.3s, box-shadow 0.3s; }
+    .blog-card:hover { transform: translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.15); }
+    .blog-card h3 { margin-top:0; color:#e67e22; }
+    .blog-card p { color:#555; }
+    .blog-card a { text-decoration:none; color:#e67e22; font-weight:bold; margin-top:0.5rem; display:inline-block; }
 
-    /* Blog Highlights */
-    .blog-highlights { margin-bottom: 4rem; }
-    .blog-highlights h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #2c3e50; }
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-    .blog-card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
-    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-    .blog-card h3 { margin-top: 0; color: #e67e22; }
-    .blog-card p { color: #555; }
+    .cta { text-align:center; margin:4rem 0; }
+    .cta a { margin:0 1rem; display:inline-block; background:#e67e22; color:#fff; padding:0.8rem 2rem; border-radius:2rem; text-decoration:none; font-weight:bold; transition:background 0.3s;}
+    .cta a:hover { background:#d35400; }
 
-    /* CTA Section */
-    .cta { text-align: center; margin: 4rem 0; }
-    .cta a { margin: 0 1rem; display: inline-block; background: #e67e22; color: #fff; padding: 0.8rem 2rem; border-radius: 2rem; text-decoration: none; font-weight: bold; transition: background 0.3s;}
-    .cta a:hover { background: #d35400; }
-
-    /* Footer */
-    footer { text-align: center; padding: 2rem; background: #ffffffee; font-size: 0.9rem; color: #555; margin-top: 4rem; }
+    footer { text-align:center; padding:2rem; background:#ffffffee; font-size:0.9rem; color:#555; margin-top:4rem; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="videos.html">Videos</a>
-      <a href="blog.html">Blog</a>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-    </nav>
-  </header>
+<header>
+  <img src="assets/logo.png" alt="Logo" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="videos.html">Videos</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Join</a>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Welcome to Motivation Hub</h1>
-    <p>Daily speeches, stories, and inspiration to keep you moving forward. Unlock your potential and ignite your motivation!</p>
-    <a href="videos.html" class="btn">Watch Videos</a>
-  </section>
+<section class="hero">
+  <h1>Welcome to Motivation Hub</h1>
+  <p>Daily speeches, stories, and inspiration to keep you moving forward. Unlock your potential and ignite your motivation!</p>
+  <a href="videos.html" class="btn">Watch Videos</a>
+</section>
 
-  <!-- Featured Videos Section -->
-  <section class="featured-videos">
-    <h2>Featured Videos</h2>
-    <div class="video-grid" id="featured-videos">
-      <!-- Featured videos loaded dynamically -->
-    </div>
-  </section>
+<section class="featured-videos">
+  <h2>Featured Videos</h2>
+  <div class="video-grid" id="featured-videos"></div>
+</section>
 
-  <!-- Blog Highlights Section -->
-  <section class="blog-highlights">
-    <h2>From Our Blog</h2>
-    <div class="blog-grid" id="blog-highlights">
-      <!-- Blog posts loaded dynamically -->
-    </div>
-  </section>
+<section class="featured-blogs">
+  <h2>From Our Blog</h2>
+  <div class="video-grid" id="blog-highlights"></div>
+</section>
 
-  <!-- CTA Section -->
-  <section class="cta">
-    <h2>Join Our Community</h2>
-    <p>Get motivational tips, personal growth advice, and lifestyle inspiration delivered weekly.</p>
-    <a href="join.html">Subscribe Now</a>
-    <a href="about.html">Learn More</a>
-  </section>
+<section class="cta">
+  <h2>Join Our Community</h2>
+  <p>Get motivational tips, personal growth advice, and lifestyle inspiration delivered weekly.</p>
+  <a href="join.html">Subscribe Now</a>
+  <a href="about.html">Learn More</a>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
+</footer>
 
-  <script src="js/app.js"></script>
-  <script>
-    // Sample dynamic loader for featured videos
-    fetch('videos.json')
-      .then(res => res.json())
-      .then(videos => {
-        const featured = document.getElementById('featured-videos');
-        videos.slice(0,4).forEach(video => {
-          const card = document.createElement('div');
-          card.classList.add('video-card');
-          card.innerHTML = `
-            <img src="${video.thumbnail}" alt="${video.title}">
-            <h3>${video.title}</h3>
-          `;
-          card.addEventListener('click', () => window.open(video.youtube || video.tiktok, '_blank'));
-          featured.appendChild(card);
-        });
-      });
+<script>
+let videosData = [];
+const featuredVideos = document.getElementById('featured-videos');
 
-    // Sample dynamic loader for blog highlights
-    fetch('blog.json')
-      .then(res => res.json())
-      .then(posts => {
-        const blogGrid = document.getElementById('blog-highlights');
-        posts.slice(0,3).forEach(post => {
-          const card = document.createElement('div');
-          card.classList.add('blog-card');
-          card.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>${post.summary}</p>
-          `;
-          card.addEventListener('click', () => window.location.href = post.url);
-          blogGrid.appendChild(card);
-        });
-      });
-  </script>
+fetch('videos.json')
+  .then(res => res.json())
+  .then(data => {
+    videosData = data;
+    displayFeaturedVideos();
+  })
+  .catch(err => console.error("Error loading videos:", err));
+
+function getYouTubeThumbnail(url) {
+  const match = url.match(/(?:youtube\.com\/(?:shorts\/|watch\?v=)|youtu\.be\/)([^\?&]+)/);
+  return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : '';
+}
+
+function displayFeaturedVideos() {
+  featuredVideos.innerHTML = '';
+  videosData.slice(0,4).forEach(video => {
+    const card = document.createElement('div');
+    card.classList.add('video-card');
+    const thumbnail = video.thumbnail || getYouTubeThumbnail(video.youtube);
+    card.innerHTML = `
+      <img src="${thumbnail}" alt="${video.title}">
+      <div class="video-card-content">
+        <h3>${video.title}</h3>
+        <p>${video.description}</p>
+        <div class="video-buttons">
+          ${video.youtube ? `<a href="${video.youtube}" target="_blank">YouTube</a>` : ''}
+          ${video.tiktok ? `<a href="${video.tiktok}" target="_blank">TikTok</a>` : ''}
+        </div>
+      </div>
+    `;
+    featuredVideos.appendChild(card);
+  });
+}
+
+// Load Blog Highlights
+fetch('blog.json')
+  .then(res => res.json())
+  .then(posts => {
+    const blogGrid = document.getElementById('blog-highlights');
+    posts.slice(0,3).forEach(post => {
+      const card = document.createElement('div');
+      card.classList.add('blog-card');
+      card.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.summary}</p>
+        <a href="${post.url}">Read More</a>
+      `;
+      blogGrid.appendChild(card);
+    });
+  })
+  .catch(err => console.error("Error loading blog posts:", err));
+</script>
 
 </body>
-    </html>
+</html>
