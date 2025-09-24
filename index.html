@@ -6,7 +6,6 @@
   <title>Motivation Hub</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Atmosphere & Style */
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -35,7 +34,6 @@
       color: #444;
       transition: color 0.3s;
     }
-
     nav a:hover {
       color: #e67e22;
     }
@@ -46,18 +44,15 @@
       background: linear-gradient(135deg, #fdfbfb, #ebedee);
       color: #2c3e50;
     }
-
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
       font-weight: 700;
     }
-
     .hero p {
       font-size: 1.25rem;
       margin-bottom: 2rem;
     }
-
     .btn {
       background: #e67e22;
       color: #fff;
@@ -67,32 +62,50 @@
       font-weight: bold;
       transition: background 0.3s;
     }
-
     .btn:hover {
       background: #d35400;
     }
 
-    /* Elegant Quote Boxes */
-    .quote-box {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 2rem;
+    /* Quotes Section */
+    .quotes {
+      padding: 4rem 2rem;
       background: #fff;
+      text-align: center;
+    }
+    .quotes h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+    }
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .quote-box {
+      background: linear-gradient(135deg, #fdfbfb, #f0f0f0);
       border-left: 6px solid #e67e22;
       border-radius: 1rem;
       box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+      padding: 2rem;
       font-style: italic;
       position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .quote-box::before {
       content: "“";
-      font-size: 4rem;
+      font-size: 3rem;
       color: #e67e22;
       position: absolute;
-      top: -20px;
-      left: 20px;
+      top: 10px;
+      left: 15px;
       opacity: 0.2;
+    }
+    .quote-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     footer {
@@ -127,13 +140,14 @@
     <!-- Featured video from JSON will load here -->
   </section>
 
-  <!-- Example Quote Boxes -->
+  <!-- Dedicated Quotes Section -->
   <section class="quotes">
-    <div class="quote-box">
-      “Your future is created by what you do today, not tomorrow.”
-    </div>
-    <div class="quote-box">
-      “Small daily steps lead to big lifetime changes.”
+    <h2>✨ Daily Inspiration ✨</h2>
+    <div class="quote-grid" id="quote-grid">
+      <div class="quote-box">“Your future is created by what you do today, not tomorrow.”</div>
+      <div class="quote-box">“Small daily steps lead to big lifetime changes.”</div>
+      <div class="quote-box">“Believe you can, and you’re halfway there.”</div>
+      <div class="quote-box">“Discipline is the bridge between goals and achievement.”</div>
     </div>
   </section>
 
@@ -143,4 +157,4 @@
 
   <script src="js/app.js"></script>
 </body>
-  </html>
+</html>
