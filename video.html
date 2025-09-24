@@ -6,167 +6,119 @@
   <title>Motivational Videos</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
-      color: #333;
-      line-height: 1.6;
-    }
+    body { font-family: 'Segoe UI', sans-serif; margin:0; background: linear-gradient(135deg, #fdfcfb, #e2d1c3); color: #333; }
+    header { padding:1.5rem 3rem; background:#ffffffdd; backdrop-filter: blur(10px); display:flex; justify-content:center; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
+    header nav a { margin:0 1rem; text-decoration:none; font-weight:500; color:#444; transition:color 0.3s;}
+    header nav a:hover { color:#e67e22; }
 
-    /* Header */
-    header {
-      padding: 1.5rem 3rem;
-      background: #ffffffdd;
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-    header nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 500;
-      color: #444;
-      transition: color 0.3s;
-    }
-    header nav a:hover { color: #e67e22; }
+    .hero-videos { text-align:center; padding:5rem 2rem 3rem 2rem; color:#2c3e50; }
+    .hero-videos h1 { font-size:3rem; margin-bottom:1rem; font-weight:700; }
+    .hero-videos p { font-size:1.2rem; max-width:700px; margin:0 auto 2rem; color:#555; }
 
-    /* Hero Section */
-    .hero-videos {
-      text-align: center;
-      padding: 5rem 2rem 3rem 2rem;
-      color: #2c3e50;
-    }
-    .hero-videos h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .hero-videos p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-      margin-bottom: 2rem;
-      color: #555;
-    }
+    .filters { text-align:center; margin-bottom:2rem; }
+    .filters button { margin:0 0.5rem; padding:0.5rem 1rem; border-radius:2rem; border:none; background:#e67e22; color:#fff; cursor:pointer; font-weight:bold; transition:background 0.3s;}
+    .filters button:hover, .filters button.active { background:#d35400; }
 
-    /* Featured Video */
-    .featured-video {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 3rem;
-    }
-    .featured-video iframe {
-      width: 90%;
-      max-width: 800px;
-      height: 450px;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 4rem auto; padding:0 2rem; }
+    .video-card { background:#fff; border-radius:1rem; box-shadow:0 8px 25px rgba(0,0,0,0.08); overflow:hidden; transition: transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; }
+    .video-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.15); }
 
-    /* Video Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto 4rem auto;
-      padding: 0 2rem;
-    }
-    .video-card {
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .video-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    }
-    .video-card img {
-      width: 100%;
-      display: block;
-    }
-    .video-card h3 {
-      font-size: 1.2rem;
-      padding: 1rem;
-      color: #2c3e50;
-    }
+    .video-card img { width:100%; height:180px; object-fit:cover; }
+    .video-card-content { padding:1rem; flex:1; display:flex; flex-direction:column; }
+    .video-card h3 { font-size:1.2rem; margin:0.5rem 0; color:#2c3e50; }
+    .video-card p { font-size:0.95rem; color:#555; flex:1; }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #ffffffee;
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 4rem;
-    }
+    .video-buttons { display:flex; gap:0.5rem; margin-top:1rem; }
+    .video-buttons a { flex:1; text-align:center; padding:0.5rem 0; border-radius:2rem; text-decoration:none; font-weight:bold; color:#fff; background:#e67e22; transition:background 0.3s;}
+    .video-buttons a:hover { background:#d35400; }
+
+    footer { text-align:center; padding:2rem; background:#ffffffee; font-size:0.9rem; color:#555; margin-top:4rem; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="videos.html">Videos</a>
-      <a href="blog.html">Blog</a>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="videos.html">Videos</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Join</a>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero-videos">
-    <h1>Watch & Get Inspired</h1>
-    <p>Every video could spark a new idea, shift your mindset, or motivate you to take action. Explore our library of motivational speeches, personal growth lessons, and uplifting stories.</p>
-  </section>
+<section class="hero-videos">
+  <h1>Watch & Get Inspired</h1>
+  <p>Browse our motivational videos by category. Click a video to visit YouTube for full inspiration!</p>
+</section>
 
-  <!-- Featured Video -->
-  <section class="featured-video">
-    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Featured Motivation Video" frameborder="0" allowfullscreen></iframe>
-  </section>
+<div class="filters">
+  <button data-category="all" class="active">All</button>
+  <button data-category="personal-growth">Personal Growth</button>
+  <button data-category="lifestyle">Lifestyle</button>
+  <button data-category="inspirational-stories">Inspirational Stories</button>
+  <button data-category="quick-clips">Quick Clips</button>
+</div>
 
-  <!-- Video Grid -->
-  <main id="video-list" class="grid">
-    <!-- Videos will be dynamically loaded from videos.json -->
-  </main>
+<main id="video-list" class="grid"></main>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
+</footer>
 
-  <script src="js/app.js"></script>
-  <script>
-    // Dynamic Video Loader
-    fetch('videos.json')
-      .then(res => res.json())
-      .then(videos => {
-        const videoList = document.getElementById('video-list');
-        videoList.innerHTML = '';
+<script>
+let videosData = [];
+const videoList = document.getElementById('video-list');
+const filterButtons = document.querySelectorAll('.filters button');
 
-        videos.forEach(video => {
-          const card = document.createElement('div');
-          card.classList.add('video-card');
+fetch('videos.json')
+  .then(res => res.json())
+  .then(data => {
+    videosData = data;
+    displayVideos('all');
+  })
+  .catch(err => console.error("Error loading videos:", err));
 
-          card.innerHTML = `
-            <img src="${video.thumbnail}" alt="${video.title}">
-            <h3>${video.title}</h3>
-          `;
+function getYouTubeThumbnail(url) {
+  // Extract video ID from YouTube URL
+  const match = url.match(/(?:youtube\.com\/(?:shorts\/|watch\?v=)|youtu\.be\/)([^\?&]+)/);
+  return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : '';
+}
 
-          card.addEventListener('click', () => {
-            window.open(video.url, '_blank');
-          });
+function displayVideos(category) {
+  videoList.innerHTML = '';
+  const filtered = category === 'all' ? videosData : videosData.filter(v => v.category === category);
 
-          videoList.appendChild(card);
-        });
-      })
-      .catch(err => console.error("Error loading videos:", err));
-  </script>
+  filtered.forEach(video => {
+    const card = document.createElement('div');
+    card.classList.add('video-card');
+
+    // Generate thumbnail from YouTube link if thumbnail not provided
+    const thumbnail = video.thumbnail || getYouTubeThumbnail(video.youtube);
+
+    card.innerHTML = `
+      <img src="${thumbnail}" alt="${video.title}">
+      <div class="video-card-content">
+        <h3>${video.title}</h3>
+        <p>${video.description}</p>
+        <div class="video-buttons">
+          ${video.youtube ? `<a href="${video.youtube}" target="_blank">YouTube</a>` : ''}
+          ${video.tiktok ? `<a href="${video.tiktok}" target="_blank">TikTok</a>` : ''}
+        </div>
+      </div>
+    `;
+    videoList.appendChild(card);
+  });
+}
+
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    displayVideos(btn.dataset.category);
+  });
+});
+</script>
 
 </body>
-</html>
+  </html>
