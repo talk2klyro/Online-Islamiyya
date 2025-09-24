@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Motivation Hub Blog</title>
+  <title>Blog | Motivation Hub</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     body { font-family: 'Segoe UI', sans-serif; margin:0; background: linear-gradient(135deg, #fdfcfb, #e2d1c3); color:#333; }
@@ -14,24 +14,29 @@
 
     section { max-width:1200px; margin:3rem auto; padding:0 2rem; }
 
-    .hero { text-align:center; padding:4rem 2rem; }
-    .hero h1 { font-size:3rem; color:#2c3e50; margin-bottom:1rem; }
-    .hero p { font-size:1.2rem; color:#555; }
-
+    h1 { text-align:center; color:#2c3e50; margin-bottom:1rem; }
     .filters { text-align:center; margin-bottom:2rem; }
-    .filters button { margin:0 0.5rem; padding:0.5rem 1rem; border-radius:2rem; border:none; background:#e67e22; color:#fff; cursor:pointer; font-weight:bold; transition:background 0.3s;}
+    .filters button { margin:0 0.5rem; padding:0.5rem 1rem; border:none; border-radius:2rem; background:#e67e22; color:#fff; font-weight:bold; cursor:pointer; transition: background 0.3s; }
     .filters button:hover, .filters button.active { background:#d35400; }
 
-    .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
-
-    .blog-card { background:#fff; border-radius:1rem; box-shadow:0 8px 25px rgba(0,0,0,0.08); overflow:hidden; transition: transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; }
-    .blog-card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.15); }
+    /* Blog Bento Cards */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .blog-card { background: #fff; border-radius:1rem; box-shadow:0 8px 25px rgba(0,0,0,0.08); overflow:hidden; transition: transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; position:relative; }
+    .blog-card:hover { transform: translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.15); }
     .blog-card img { width:100%; height:180px; object-fit:cover; }
     .blog-card-content { padding:1rem; flex:1; display:flex; flex-direction:column; }
-    .blog-card h3 { font-size:1.3rem; margin:0.5rem 0; color:#2c3e50; }
-    .blog-card p { font-size:1rem; color:#555; flex:1; }
-    .blog-card a { margin-top:1rem; padding:0.5rem 1rem; background:#e67e22; color:#fff; border-radius:2rem; text-align:center; text-decoration:none; font-weight:bold; transition:background 0.3s;}
+    .blog-card h3 { font-size:1.2rem; margin:0.5rem 0; color:#2c3e50; }
+    .blog-card p { font-size:0.95rem; color:#555; flex:1; }
+    .blog-card a { margin-top:1rem; text-align:center; padding:0.6rem 0; border-radius:2rem; text-decoration:none; font-weight:bold; color:#fff; background:#e67e22; transition:background 0.3s; }
     .blog-card a:hover { background:#d35400; }
+
+    /* Category badge */
+    .category-badge { display:inline-block; background:#e67e22; color:#fff; padding:0.2rem 0.6rem; border-radius:1rem; font-size:0.75rem; font-weight:bold; margin-bottom:0.5rem; text-transform:uppercase; transition: transform 0.3s, box-shadow 0.3s; position:relative; }
+    .blog-card:hover .category-badge { transform: translateY(-3px) scale(1.05); box-shadow:0 4px 10px rgba(0,0,0,0.15); }
+
+    .cta { text-align:center; margin:4rem 0; }
+    .cta a { margin:0 1rem; display:inline-block; background:#e67e22; color:#fff; padding:0.8rem 2rem; border-radius:2rem; text-decoration:none; font-weight:bold; transition:background 0.3s;}
+    .cta a:hover { background:#d35400; }
 
     footer { text-align:center; padding:2rem; background:#ffffffee; font-size:0.9rem; color:#555; margin-top:4rem; }
   </style>
@@ -49,20 +54,23 @@
   </nav>
 </header>
 
-<section class="hero">
+<section>
   <h1>Our Blog</h1>
-  <p>Explore articles on personal growth, lifestyle tips, and daily inspiration to motivate you every day.</p>
+  <div class="filters">
+    <button class="active" data-category="all">All</button>
+    <button data-category="personal-growth">Personal Growth</button>
+    <button data-category="lifestyle">Lifestyle</button>
+    <button data-category="inspirational-stories">Inspirational</button>
+  </div>
+  <div class="blog-grid" id="blog-grid">
+    <!-- Blog cards will load dynamically here -->
+  </div>
 </section>
 
-<section class="filters">
-  <button data-category="all" class="active">All</button>
-  <button data-category="personal-growth">Personal Growth</button>
-  <button data-category="lifestyle">Lifestyle</button>
-  <button data-category="inspirational-stories">Inspirational Stories</button>
-</section>
-
-<section class="blog-grid" id="blog-grid">
-  <!-- Blog posts will be loaded here dynamically -->
+<section class="cta">
+  <h2>Enjoyed our blogs?</h2>
+  <p>Subscribe to our newsletter for weekly inspiration and tips!</p>
+  <a href="join.html">Subscribe Now</a>
 </section>
 
 <footer>
@@ -74,6 +82,7 @@ let blogData = [];
 const blogGrid = document.getElementById('blog-grid');
 const filterButtons = document.querySelectorAll('.filters button');
 
+// Load blog posts
 fetch('blog.json')
   .then(res => res.json())
   .then(data => {
@@ -82,6 +91,7 @@ fetch('blog.json')
   })
   .catch(err => console.error("Error loading blog posts:", err));
 
+// Display blogs function
 function displayBlogs(category) {
   blogGrid.innerHTML = '';
   const filtered = category === 'all' ? blogData : blogData.filter(post => post.category === category);
@@ -91,15 +101,27 @@ function displayBlogs(category) {
     card.innerHTML = `
       ${post.thumbnail ? `<img src="${post.thumbnail}" alt="${post.title}">` : ''}
       <div class="blog-card-content">
+        <span class="category-badge">${formatCategory(post.category)}</span>
         <h3>${post.title}</h3>
         <p>${post.summary}</p>
-        <a href="${post.url}">Read More</a>
+        <a href="post.html?id=${post.id}">Read More</a>
       </div>
     `;
     blogGrid.appendChild(card);
   });
 }
 
+// Format category names
+function formatCategory(cat) {
+  switch(cat) {
+    case 'personal-growth': return 'Personal Growth';
+    case 'lifestyle': return 'Lifestyle';
+    case 'inspirational-stories': return 'Inspirational';
+    default: return cat;
+  }
+}
+
+// Filter button clicks
 filterButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     filterButtons.forEach(b => b.classList.remove('active'));
@@ -110,4 +132,4 @@ filterButtons.forEach(btn => {
 </script>
 
 </body>
-                                                       </html>
+</html>
