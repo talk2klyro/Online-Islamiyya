@@ -5,10 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Motivation Hub</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Atmosphere & Style */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      background: #ffffffdd;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: #444;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e67e22;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      color: #2c3e50;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: #e67e22;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #d35400;
+    }
+
+    /* Elegant Quote Boxes */
+    .quote-box {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-left: 6px solid #e67e22;
+      border-radius: 1rem;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+      font-style: italic;
+      position: relative;
+    }
+
+    .quote-box::before {
+      content: "“";
+      font-size: 4rem;
+      color: #e67e22;
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      opacity: 0.2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #ffffffee;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 4rem;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
+    <img src="assets/logo.png" alt="Logo" class="logo" style="height:50px;">
     <nav>
       <a href="index.html">Home</a>
       <a href="videos.html">Videos</a>
@@ -28,10 +127,20 @@
     <!-- Featured video from JSON will load here -->
   </section>
 
+  <!-- Example Quote Boxes -->
+  <section class="quotes">
+    <div class="quote-box">
+      “Your future is created by what you do today, not tomorrow.”
+    </div>
+    <div class="quote-box">
+      “Small daily steps lead to big lifetime changes.”
+    </div>
+  </section>
+
   <footer>
     <p>&copy; 2025 Motivation Hub | All Rights Reserved</p>
   </footer>
 
   <script src="js/app.js"></script>
 </body>
-</html>
+  </html>
